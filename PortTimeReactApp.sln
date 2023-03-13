@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortTimeReactApp", "PortTimeReactApp\PortTimeReactApp.csproj", "{48E59761-2937-410B-BA54-B8DF32E9E575}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{B2DA422F-C546-430E-B25D-E3875E156939}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48E59761-2937-410B-BA54-B8DF32E9E575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E59761-2937-410B-BA54-B8DF32E9E575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E59761-2937-410B-BA54-B8DF32E9E575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E59761-2937-410B-BA54-B8DF32E9E575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2DA422F-C546-430E-B25D-E3875E156939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DA422F-C546-430E-B25D-E3875E156939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DA422F-C546-430E-B25D-E3875E156939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DA422F-C546-430E-B25D-E3875E156939}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B669528-8B47-4F6A-887F-336C6FCA99BD}
+	EndGlobalSection
+EndGlobal
