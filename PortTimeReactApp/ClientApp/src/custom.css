@@ -87,3 +87,6 @@ table {
     margin-top: 1rem;
     color: #f00;
 }
+td {
+    padding: 5px;
+}

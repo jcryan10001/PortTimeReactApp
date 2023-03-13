@@ -62,10 +62,10 @@ export class Home extends Component {
 
     tick(){
         if (this.state.cityWeather) {
-            const date = new Date(this.state.date);
-            date.setSeconds(date.getSeconds() + 1);
+            const time = new Date(this.state.date);
+            time.setSeconds(time.getSeconds() + 1);
             this.setState({
-                date: date,
+                date: time,
             });
         }
         
@@ -102,20 +102,20 @@ export class Home extends Component {
                             </tr>
                             <tr>
                                     <td>Local Time</td>
-                                    <td>{date.toLocaleTimeString()}</td>
+                                    <td>{date.toISOString().split('T')[0]} {date.toLocaleTimeString()}</td>
                             </tr>
                             <tr>
                                     <td>Temperature</td>
                                     <td>{cityWeather.temperature}&#176;C</td>
                             </tr>
-                            <tr>
-                                <td>Sunrise</td>
-                                <td>{new Date(cityWeather.sunrise).toLocaleTimeString()}</td>
-                            </tr>
-                            <tr>
-                                <td>Sunset</td>
-                                <td>{new Date(cityWeather.sunset).toLocaleTimeString()}</td>
-                            </tr>
+                                <tr>
+                                    <td>Sunrise</td>
+                                    <td>{new Date(cityWeather.sunrise).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunset</td>
+                                    <td>{new Date(cityWeather.sunset).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}</td>
+                                </tr>
                         </tbody>
                     </table>
                 ) : null}
