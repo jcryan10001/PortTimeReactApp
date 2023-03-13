@@ -7,20 +7,21 @@ export class Home extends Component {
             searchQuery: '',
             cityWeather: null,
             loading: false,
-            localTime: new Date(),
+            date: new Date(),
+            timerID: null // add timerID to state
         };
         this.handleSearchChange = this.handleSearchChange.bind(this);
         this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
-        this.startTimer = this.startTimer.bind(this);
         this.tick = this.tick.bind(this);
     }
 
     componentDidMount() {
-        this.startTimer();
+        const timerID = setInterval(this.tick, 1000); // store timerID in state
+        this.setState({ timerID });
     }
 
     componentWillUnmount() {
-        clearInterval(this.intervalID);
+        clearInterval(this.state.timerID);
     }
 
     handleSearchChange(event) {
@@ -40,16 +41,16 @@ export class Home extends Component {
                 throw new Error('City not found!');
             }
 
-            const cityWeather = {
+            const cityWeather1 = {
                 ...data,
                 localTime: data.localTime, // Convert the string to a Date object
             };
 
-            this.setState({ cityWeather: cityWeather, loading: false });
+            this.setState({ cityWeather: cityWeather1, loading: false, date: new Date(cityWeather1.localTime) });
         } catch (error) {
             console.error(error);
             alert('City not found!');
-            this.setState({ loading: false });
+            this.setState({ loading: false, cityWeather: null });
         }
     }
 
@@ -59,16 +60,18 @@ export class Home extends Component {
         }, 1000);
     }
 
-    tick() {
-        const { cityWeather } = this.state;
-        if (cityWeather) {
-            const localTime = new Date(cityWeather.localTime);
-            localTime.setSeconds(localTime.getSeconds() + 1);
-            this.setState({ localTime });
+    tick(){
+        if (this.state.cityWeather) {
+            const date = new Date(this.state.date);
+            date.setSeconds(date.getSeconds() + 1);
+            this.setState({
+                date: date,
+            });
         }
+        
     }
     render() {
-        const { cityWeather, loading, localTime } = this.state;
+        const { cityWeather, loading, date } = this.state;
 
         return (
             <div>
@@ -82,7 +85,7 @@ export class Home extends Component {
                 </form>
                 {loading ? (
                     <p>Loading...</p>
-                ) : cityWeather ? (
+                ) : cityWeather? (
                     <table>
                         <tbody>
                             <tr>
@@ -90,8 +93,8 @@ export class Home extends Component {
                                 <td>{cityWeather.city}</td>
                             </tr>
                             <tr>
-                                <td>Region</td>
-                                <td>{cityWeather.region}</td>
+                                    <td>Region</td>
+                                    <td>{cityWeather.region}</td>
                             </tr>
                             <tr>
                                 <td>Country</td>
@@ -99,11 +102,11 @@ export class Home extends Component {
                             </tr>
                             <tr>
                                     <td>Local Time</td>
-                                    <td>{localTime ? new Date(localTime).toLocaleTimeString() : ''}</td>
+                                    <td>{date.toLocaleTimeString()}</td>
                             </tr>
                             <tr>
-                                <td>Temperature</td>
-                                <td>{cityWeather.temperature}</td>
+                                    <td>Temperature</td>
+                                    <td>{cityWeather.temperature}&#176;C</td>
                             </tr>
                             <tr>
                                 <td>Sunrise</td>
