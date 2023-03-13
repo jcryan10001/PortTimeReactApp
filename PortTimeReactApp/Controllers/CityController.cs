@@ -50,7 +50,7 @@ namespace PortTimeReactApp.Controllers
                     }
                 };
 
-                var localTimeStr = currentWeatherData.Current.;
+                var localTimeStr = currentWeatherData.Location.localtime;
                 var sunriseStr = astroData.Astronomy.Astro.Sunrise;
                 var sunsetStr = astroData.Astronomy.Astro.Sunset;
                 DateTime localTime = DateTime.Parse(localTimeStr);
